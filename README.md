@@ -1,0 +1,1 @@
+# floatingTodo.nvim
