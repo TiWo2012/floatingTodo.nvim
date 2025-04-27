@@ -1,4 +1,11 @@
+local M = {}
+
+local function expandPathHome(path)
+  return os.getenv("HOME") .. "/" .. path
+end
+
 local buf -- Variable to hold the buffer ID
+local file_path = expandPathHome(".todo.md")
 
 local function winopts()
   return {
@@ -11,11 +18,8 @@ local function winopts()
   }
 end
 
-local function expandPathHome(path)
-  return os.getenv("HOME") .. "/" .. path
-end
 
-local function createBuffer(file_path)
+local function createBuffer()
   if buf == nil then
     -- Open the file
     local file = io.open(file_path, "r")
@@ -42,14 +46,14 @@ local function createBuffer(file_path)
 end
 
 local function OpenFloat()
-  local file_path = expandPathHome(".todo.md")
-
-  -- Check if the buffer already exists
-  buf = createBuffer(file_path)
-
   -- Create or open the floating window
   local win = vim.api.nvim_open_win(buf, true, winopts())
 end
 
--- Create a user command to open the floating window
-vim.api.nvim_create_user_command('Note', OpenFloat, {})
+function M.setup()
+  buf = createBuffer()
+  -- Create a user command to open the floating window
+  vim.api.nvim_create_user_command('Note', OpenFloat, {})
+end
+
+return M
