@@ -4,7 +4,7 @@ local function expandPathHome(path)
   return os.getenv("HOME") .. "/" .. path
 end
 
-local buf = 999 -- Variable to hold the buffer ID
+local buf = nil -- Variable to hold the buffer ID
 local file_path = expandPathHome(".todo.md")
 
 local function winopts()
@@ -40,6 +40,12 @@ local function createBuffer()
 
     -- Set the buffer name to the file path
     vim.api.nvim_buf_set_name(buf, file_path)
+  end
+
+  if buf == nil then
+    print("Could not create buffer")
+
+    return
   end
 
   return buf
