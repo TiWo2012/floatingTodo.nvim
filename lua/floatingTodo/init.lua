@@ -4,7 +4,7 @@ local function expandPathHome(path)
   return os.getenv("HOME") .. "/" .. path
 end
 
-local buf -- Variable to hold the buffer ID
+local buf = 999 -- Variable to hold the buffer ID
 local file_path = expandPathHome(".todo.md")
 
 local function winopts()
@@ -46,12 +46,13 @@ local function createBuffer()
 end
 
 local function OpenFloat()
+  createBuffer()
+
   -- Create or open the floating window
   local win = vim.api.nvim_open_win(buf, true, winopts())
 end
 
 function M.setup()
-  buf = createBuffer()
   -- Create a user command to open the floating window
   vim.api.nvim_create_user_command('Note', OpenFloat, {})
 end
