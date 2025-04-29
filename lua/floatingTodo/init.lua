@@ -40,6 +40,8 @@ local function createBuffer()
 
     -- Set the buffer name to the file path
     vim.api.nvim_buf_set_name(buf, file_path)
+
+    vim.api.nvim_buf_set_option(buf, "filetype", "markdown")
   end
 
   if buf == nil then
