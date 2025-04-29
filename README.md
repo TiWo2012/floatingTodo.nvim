@@ -21,7 +21,7 @@
 }
 '''
 </p>
-</deatils>
+</details>
 
 ## my nvim config:
 [ignitionvim](https://github.com/TiWo2012/ignitionvim)
