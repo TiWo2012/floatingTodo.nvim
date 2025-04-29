@@ -10,7 +10,6 @@
 <summary>lazy.nvim</summary>
 
 <br>
-<p>
 '''lua
 
 {
@@ -18,9 +17,7 @@
     config = function()
         require("floatingTodo").setup()
     end,
-}
-'''
-</p>
+}'''
 </details>
 
 ## my nvim config:
