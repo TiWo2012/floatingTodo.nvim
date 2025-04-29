@@ -10,14 +10,14 @@
 <summary>lazy.nvim</summary>
 
 <br>
-'''lua
+```lua
 
 {
     "TiWo2012/floatingTodo.nvim",
     config = function()
         require("floatingTodo").setup()
     end,
-}'''
+}```
 </details>
 
 ## my nvim config:
